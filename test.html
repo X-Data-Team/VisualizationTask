@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+</head>
+<body>
+    <canvas id="canvas" style="display:block;margin:50px auto;"></canvas>
+    <script>
+        var max_particles    = 100;
+        var particles        = [];
+        var frequency        = 100;
+        var init_num         = max_particles;
+        var max_time         = frequency*max_particles;
+        var time_to_recreate = false;
+
+        setTimeout(function(){
+            time_to_recreate = true;
+        }.bind(this), max_time)
+
+        init(max_particles);
+
+        var canvas=document.getElementById("canvas");
+            canvas.width=1000;
+            canvas.height=1000;
+            var context=canvas.getContext("2d");
+            context.fillStyle="black";
+            context.fillRect(0,0,canvas.width,canvas.height);
+
+        class Balls{
+            constructor(context){
+                const colors=["#feea00","#a9df85","#5dc0ad", "#ff9a00","#fa3f20"]
+                const radiuses=[5,10,15]
+
+                this.x=Math.random()*1000
+                this.y=Math.random()*1000
+                this.w=1000
+                this.h=1000
+                this.context=context
+                this.color=colors[this.getIndex(0,colors.length)]
+                this.radius=radiuses[this.getIndex(0,radiuses.length)]
+
+                this.a = 0
+                this.s = (this.radius + (Math.random() * 1))/10
+
+            }
+              getIndex(min,max){
+                return Math.floor(Math.random()*(max-min))
+            }
+
+            draw(radius,color){
+                this.context.beginPath();
+                this.context.arc(this.x, this.y, radius, 0, 2 * Math.PI);
+                this.context.fillStyle = color;
+                this.context.fill();
+                this.context.closePath();
+            }
+            getxy(){
+                return{
+                    x:this.x,
+                    y:this.y
+                }
+            }
+            move(){
+                this.x += Math.cos(this.a) * this.s;
+                this.y += Math.sin(this.a) * this.s;
+                this.a += Math.random() * 0.4 - 0.2;
+                if(this.x<0||this.x>this.w-this.radius){
+                    return false
+                }
+                if(this.y<0||this.y>this.h-this.radius){
+                    return false
+                }
+                this.draw(this.radius,this.color);
+                return true
+            }
+
+        }
+
+        /*
+         * Function to clear layer canvas
+         * @num:number number of particles
+         */
+        function init(num){
+            for (var i = 0; i < num; i++) {
+                setTimeout(
+                    function(x){
+                        return function(){
+                            // Add particle
+                            particles.push(new Balls(context))
+                        };
+                    }(i)
+                    ,frequency*i);
+            }
+            return particles.length
+        }
+
+        function clear(){
+            // canvas.globalAlpha=0.04;
+            context.fillStyle='#111111';
+            context.fillRect(0, 0, 1000, 1000);
+            // canvas.globalAlpha=1;
+        }
+
+
+function dralLine(){
+    var olditem = null
+  $.each(particles, function(i, item){
+    if(i>0){
+      var box1 = olditem.getxy();
+        var box2 = item.getxy();
+      context.beginPath();
+      context.moveTo(box1.x,box1.y);
+      context.lineTo(box2.x,box2.y);
+      context.lineWidth = 0.7;
+      context.strokeStyle="#3f49ff";
+      context.stroke();
+      context.closePath();
+    }
+
+    olditem = item;
+  })
+}
+
+
+        /*
+         * Function to update particles in canvas
+         */
+        function update(){
+            clear();
+            dralLine();
+            particles = particles.filter(function(p) { return p.move() })
+            // Recreate particles
+            if(time_to_recreate){
+                if(particles.length < init_num){ init(1);}
+            }
+            requestAnimationFrame(update.bind(this))
+        }
+
+        update();
+    </script>
+</body>
+</html>
