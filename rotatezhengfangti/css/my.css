@@ -1,0 +1,175 @@
+.wrap {
+	width: 600px;
+	-webkit-perspective: 800px;
+	-webkit-perspective-origin: 50% 100px;
+	margin: 200px auto;
+	position: relative;
+}
+
+.cube {
+	position: absolute;
+	left: 200px;
+	width: 200px;
+	-webkit-transform-style: preserve-3d;
+	margin: 100px auto;
+}
+
+.cube div {
+	position: absolute;
+	width: 200px;
+	height: 200px;
+	background: rgba(255,255,255,0.1);
+    box-shadow: inset 0 0 30px rgba(125,125,125,0.8);
+	text-align: center;
+	line-height: 200px;
+	text-transform: uppercase;
+	}
+/*  形成一个组合立方体*/
+.cube .back {
+	-webkit-transform: translateZ(-100px)  rotateY(180deg);
+}
+
+.cube .right {
+	-webkit-transform: rotateY(90deg)  translateZ(100px);
+	-webkit-transform-origin: center;
+}
+
+.cube .left {
+	-webkit-transform: rotateY(-90deg) translateZ(100px);
+	-webkit-transform-origin: center  ;
+}
+
+.cube .top {
+	-webkit-transform: rotateX(90deg) translateZ(100px);
+	-webkit-transform-origin:  center;
+}
+
+.cube .bottom {
+	-webkit-transform: rotateX(90deg) translateZ(-100px);
+	-webkit-transform-origin:  center;
+}
+
+.cube .front {
+	-webkit-transform: translateZ(100px);
+}
+
+
+  /*组合立方体开始旋转*/
+@keyframes spin {
+    from { -webkit-transform: rotateX(0); }
+    to { -webkit-transform: rotateX(360deg); }
+}
+ 
+.cube {
+    animation: spin 15s infinite linear;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*.cube1 {
+	position: relative;
+	width: 100px;
+	-webkit-transform-style: preserve-3d;
+	top: 150px;
+	left: 250px;
+	/*margin-top: 50px auto;*/
+}
+
+/*.cube1 div {
+	position: absolute;
+	width: 100px;
+	height: 100px;
+	background: rgba(255,255,255,0.1);
+    box-shadow: inset 0 0 30px rgba(125,125,125,0.8);
+	text-align: center;
+	line-height: 100px;
+}*/
+/*  形成一个组合立方体*/
+/*.cube1 .back {
+	-webkit-transform: translateZ(-50px)  rotateY(180deg);
+}
+
+.cube1 .right {
+	-webkit-transform: rotateY(-270deg)  translateX(50px);
+	-webkit-transform-origin: center;
+}
+
+.cube1 .left {
+	-webkit-transform: rotateY(270deg) translateX(-50px);
+	-webkit-transform-origin: center ;
+}
+
+.cube1 .top {
+	-webkit-transform: rotateX(-90deg) translateY(-50px);
+	-webkit-transform-origin: center;
+}
+
+.cube1 .bottom {
+	-webkit-transform: rotateX(90deg) translateY(50px);
+	-webkit-transform-origin: center;
+}
+
+.cube1 .front {
+	-webkit-transform: translateZ(50px);
+}
+
+
+  /*组合立方体开始旋转*/
+@keyframes spin {
+    from { -webkit-transform: rotateY(0); }
+    to { -webkit-transform: rotateY(360deg); }
+}
+ .cube1 {
+    animation: spin 15s infinite linear;
+}*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
