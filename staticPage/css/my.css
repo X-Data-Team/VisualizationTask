@@ -1,0 +1,92 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+
+body{
+	width: 1250px;
+	height: 700px;
+}
+
+#wrap{
+	height: 100%;
+	width: 30%;
+	margin-left: 470px;
+	margin-right: 400px;
+	background: #CCC;
+}
+
+#top{
+	width: 100%;
+	height: 50.8%;
+	background-image: url(../img/new.png);
+	background-repeat: no-repeat;
+	background-size:100%,100% ;
+}
+#upbottom{
+	width: 100%;
+	height:  29%;
+}
+#bottom{
+	background: blueviolet;
+	width: 100%;
+	height:  20.2%;
+	background-color: rgb(240,239,240);
+}
+
+#topdiv1{
+	width: 100%;
+	height: 30%;
+}
+#topdiv2{
+	width: 100%;
+	height: 70%;
+}
+
+#bottom #img{
+	
+}
+#ex1Slider .slider-selection {
+	background: #BABABA;
+}
+
+
+#all-progress {
+	width : 250px;
+	border-radius : 2px; height : 4px; 
+	background-color : grey; 
+	overflow : visible; 
+}
+  
+#current-progress { 
+	width : 60%; 
+	border-radius : 2px; 
+	height : 4px; 
+	background-color : deepskyblue;
+}  
+
+#progress-button { 
+	width: 15px; 
+	height: 15px; 
+	display: block; 
+	background-color: white; 
+	box-shadow: 0.5px 3px 15px #888888;
+    border-radius: 50px; 
+	position: relative; 
+    top:-6px; 
+	float: right; 
+}
+
+#progress-button-inside { 
+	width: 8.5px; 
+	height: 8.5px; 
+	display: block; 
+	background-color: deepskyblue; 
+	box-shadow: 0.5px 3px 15px #888888;
+    border-radius: 50px; 
+	position: relative; 
+    top:-3px;  
+	margin-top:6px;
+	margin-left: 3.5px;
+}
+
